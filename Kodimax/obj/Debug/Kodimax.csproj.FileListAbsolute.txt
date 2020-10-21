@@ -1,0 +1,16 @@
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax\Kodimax\bin\Debug\Kodimax.exe.config
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax\Kodimax\bin\Debug\Kodimax.exe
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax\Kodimax\bin\Debug\Kodimax.pdb
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax\Kodimax\obj\Debug\Kodimax.csproj.CoreCompileInputs.cache
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax\Kodimax\obj\Debug\Kodimax.exe
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax\Kodimax\obj\Debug\Kodimax.pdb
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\bin\Debug\Kodimax.exe.config
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\bin\Debug\Kodimax.exe
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\bin\Debug\Kodimax.pdb
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\obj\Debug\Kodimax.csprojAssemblyReference.cache
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\obj\Debug\Kodimax.csproj.CoreCompileInputs.cache
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\obj\Debug\Kodimax.exe
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\obj\Debug\Kodimax.pdb
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\bin\Debug\Newtonsoft.Json.dll
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\bin\Debug\Newtonsoft.Json.xml
+C:\Users\matrix08\Documents\Git_GitHub\Kodimax_v2\Kodimax\obj\Debug\Kodimax.csproj.CopyComplete
