@@ -12,11 +12,11 @@ namespace Kodimax
 
         public static void Main()
         {
-            //Codigo para registrar a alguien como empleado: emp-max
             int pass = 0, opt, regis, optmenu;
             int again = 1, exit, modify;
             string user, password;
             char selectRep;
+            int count = 3, count2 = 5;
             
             //Instancias de clases
             Admin admin = new Admin("admin-max", "@dminM@x");
@@ -25,7 +25,8 @@ namespace Kodimax
             Employee empl = new Employee();
             ExhibitionRoom er = new ExhibitionRoom();
             Reports reps = new Reports();
-
+            Branch bran = new Branch();
+            
             //Lista de Clientes
             List<People> clients = new List<People>();
             clients.Add(new People("David", "Mendoza", "davmen@gmail.com", "87654321", 'M', "19/06/01", "david", "9182"));
@@ -50,6 +51,16 @@ namespace Kodimax
             candies.Add(new Candy(3, "M&M's", "Chocolate", 3.85m));
             candies.Add(new Candy(4, "Mentas", "Dulce", 1.25m));
             candies.Add(new Candy(5, "Bon o Bon", "Chocolate", 0.75m));
+            //Lista de sucursales
+            List<Branch> branches = new List<Branch>();
+            branches.Add(new Branch(1, "Soyapango", 5.25m));
+            branches.Add(new Branch(2, "San Salvador", 6.00m));
+            branches.Add(new Branch(3, "Santa Tecla", 5.45m));
+            branches.Add(new Branch(4, "Ciudad Delgado", 5.90m));
+            branches.Add(new Branch(5, "Merliot", 6.15m));
+            //Lista de ventas por sucursal
+            List<Sales> sales = new List<Sales>();
+
             do
             {
                 exit = 0;
@@ -88,7 +99,7 @@ namespace Kodimax
                             }
                             break;
                         case 2:
-                            foreach (People e in employees)
+                            foreach (Employee e in employees)
                             {
                                 if (user == e.User && password == e.Password)
                                 {
@@ -115,19 +126,16 @@ namespace Kodimax
                     }
                     if (pass == 0)
                     {
-                        if (opt == 1)
+                        if (opt == 1 || opt == 2)
                         {
                             Console.WriteLine("\nEl usuario no esta registrado en Clientes");
                             Console.Write("Desea registrarse(digite el numero) ? \n1.Si\n2.No\n\n");
                             regis = int.Parse(Console.ReadLine());
-                            if (regis == 1) p.Register(clients, employees);
-                        }
-                        if (opt == 2)
-                        {
-                            Console.WriteLine("\nEl usuario no esta registrado en Empleados");
-                            Console.Write("Desea registrarse(digite el numero) ? \n1.Si\n2.No\n\n");
-                            regis = int.Parse(Console.ReadLine());
-                            if (regis == 1) p.Register(clients, employees);
+                            if (regis == 1)
+                            {
+                                count++;
+                                p.Register(clients, employees, count);
+                            }    
                         }
                         if (opt == 3)
                         {
@@ -151,7 +159,8 @@ namespace Kodimax
                                 Console.WriteLine("              KODIMAX - Cliente\n");
                                 Console.WriteLine("Bienvenido, elija una de las opciones(digite el numero)\n");
                                 Console.WriteLine("1.Ver cartelera\n2.Ver tienda de golosinas");
-                                Console.WriteLine("3.Comprar boletos\n4.Comprar golosinas\n5.Cerrar sesion\n");
+                                Console.WriteLine("3.Comprar boletos\n4.Comprar golosinas");
+                                Console.WriteLine("5.Ver sucursales\n6.Cerrar sesion\n");
                                 optmenu = int.Parse(Console.ReadLine());
                                 switch (optmenu)
                                 {
@@ -162,12 +171,15 @@ namespace Kodimax
                                         client.SeeCandiesShop(candies);
                                         break;
                                     case 3:
-                                        client.BuyTickets(movies, employees, er);
+                                        client.BuyTickets(movies, employees, er, branches, sales);
                                         break;
                                     case 4:
                                         client.BuyCandies(candies, employees);
                                         break;
                                     case 5:
+                                        client.SeeBranches(branches);
+                                        break;
+                                    case 6:
                                         exit = 1;
                                         break;
                                 }
@@ -175,7 +187,8 @@ namespace Kodimax
                             case 2://Empleado
                                 Console.WriteLine("       KODIMAX - Empleado\n");
                                 Console.WriteLine("Bienvenido, elija una de las opciones(digite el numero)\n");
-                                Console.WriteLine("1.Modificar cartelera\n2.Modificar tienda de golosinas\n3.Cerrar sesion\n");
+                                Console.WriteLine("1.Modificar cartelera\n2.Modificar tienda de golosinas");
+                                Console.WriteLine("3.Modificar sucursales\n4.Cerrar sesion\n");
                                 optmenu = int.Parse(Console.ReadLine());
                                 switch (optmenu)
                                 {
@@ -222,6 +235,24 @@ namespace Kodimax
                                         }
                                         break;
                                     case 3:
+                                        Console.Clear();
+                                        Console.WriteLine("     KODIMAX - Modificar sucursales\n");
+                                        Console.WriteLine("Digite el numero: \n\n1.Agregar sucursal\n2.Modificar sucursal\n3.Salir\n");
+                                        modify = int.Parse(Console.ReadLine());
+                                        switch (modify)
+                                        {
+                                            case 1:
+                                                count2++;
+                                                bran.AddBranch(branches, count2);
+                                                break;
+                                            case 2:
+                                                bran.ModifyBranch(branches);
+                                                break;
+                                            case 3:
+                                                break;
+                                        }
+                                        break;
+                                    case 4:
                                         exit = 1;
                                         break;
                                 }
@@ -231,7 +262,8 @@ namespace Kodimax
                                 Console.WriteLine("Bienvenido, elija una de las opciones(digite el numero)\n");
                                 Console.WriteLine("1.Crear o eliminar empleados\n2.Eliminar usuarios");
                                 Console.WriteLine("3.Modificar cartelera\n4.Modificar tienda de golosinas");
-                                Console.WriteLine("5.Reportes\n6.Cerrar sesion\n");
+                                Console.WriteLine("5.Modificar sucursales\n6.Reportes");
+                                Console.WriteLine("7.Cerrar sesion\n");
                                 optmenu = int.Parse(Console.ReadLine());
                                 switch (optmenu)
                                 {
@@ -243,7 +275,8 @@ namespace Kodimax
                                         switch (modify)
                                         {
                                             case 1:
-                                                admin.RegisterEmployee(employees);
+                                                count++;
+                                                admin.RegisterEmployee(employees, count);
                                                 break;
                                             case 2:
                                                 admin.DeleteEmployee(employees);
@@ -299,9 +332,28 @@ namespace Kodimax
                                         break;
                                     case 5:
                                         Console.Clear();
+                                        Console.WriteLine("     KODIMAX - Modificar sucursales\n");
+                                        Console.WriteLine("Digite el numero: \n\n1.Agregar sucursal\n2.Modificar sucursal\n3.Salir\n");
+                                        modify = int.Parse(Console.ReadLine());
+                                        switch (modify)
+                                        {
+                                            case 1:
+                                                count2++;
+                                                bran.AddBranch(branches, count2);
+                                                break;
+                                            case 2:
+                                                bran.ModifyBranch(branches);
+                                                break;
+                                            case 3:
+                                                break;
+                                        }
+                                        break;
+                                    case 6:
+                                        Console.Clear();
                                         Console.WriteLine("\tKODIMAX - Reportes\n");
                                         Console.WriteLine("Digite la letra: \n\nU - Lista de todos los usuarios");
-                                        Console.WriteLine("C - Lista de peliculas\nG - Lista de golosinas\n");
+                                        Console.WriteLine("C - Lista de peliculas\nG - Lista de golosinas");
+                                        Console.WriteLine("V - Lista de ventas por sucursal\n");
                                         selectRep = char.Parse(Console.ReadLine());
                                         switch (selectRep)
                                         {
@@ -317,10 +369,14 @@ namespace Kodimax
                                             case 'g':
                                                 reps.CandiesReport(candies);
                                                 break;
-                                            
+                                            case 'V':
+                                            case 'v':
+                                                reps.SalesReport(sales);
+                                                break;
+
                                         }
                                         break;
-                                    case 6:
+                                    case 7:
                                         exit = 1;
                                         break;
                                 }

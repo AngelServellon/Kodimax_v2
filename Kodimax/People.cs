@@ -17,8 +17,7 @@ namespace Kodimax
         public string BirthDate;
         public string User;
         public string Password;
-		private int count = 3;
-
+		
 		public People(){
         
         }
@@ -33,7 +32,7 @@ namespace Kodimax
 	        Password= password;
         } 
         //Registrar un usuario
-        public void Register(List<People> clientes, List<Employee> empls){
+        public void Register(List<People> clientes, List<Employee> empls, int count){
 	        string day, month, year, code;
 	        int again= 1;
 	        People per= new People();
@@ -79,7 +78,6 @@ namespace Kodimax
 		    //Decidir si lo registrara como cliente o empleado 
 		    if(code == "emp-max"){
 		    	Employee empl= new Employee();
-		    	count++;
 		    	empl.Id= count;
 		    	empl.Names=per.Names;
 		        empl.Surnames= per.Surnames;

@@ -34,6 +34,19 @@ namespace Kodimax
     			Console.WriteLine("Precio: ${0:0.00}\n", c.Price);
     		}
     	}
+        //Ver lista de sucursales
+        public void SeeBranches(List<Branch> branches)
+        {
+            Console.Clear();
+            Console.WriteLine("   KODIMAX - Sucursales \n");
+            foreach (Branch b in branches)
+            {
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("\n    {0}\n", b.Name);
+                Console.WriteLine("Id: {0}", b.Id);
+                Console.WriteLine("Precio en Autocine: ${0:0.00}\n", b.Price);
+            }
+        }
     	
     }
 }

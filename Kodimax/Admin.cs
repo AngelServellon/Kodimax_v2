@@ -9,21 +9,20 @@ namespace Kodimax
 
     public class Admin : Employee
     {
-		private int count = 10;
-        public Admin(string user, string password){
+		public Admin(string user, string password){
         	User= user;
         	Password= password;
         }
         //Registrar un empleado
-        public void RegisterEmployee(List<Employee> empleados){
+        public void RegisterEmployee(List<Employee> empleados, int count){
 	        string day, month, year;
 	        int again= 1;
 	        Employee emp= new Employee();
 	        
 	        Console.Clear();
 	        Console.WriteLine("       KODIMAX - Registrar empleado\n");
-	        emp.Id= count++;
-	        Console.Write("Nombres: ");
+	        emp.Id = count;
+			Console.Write("Nombres: ");
 	        emp.Names= Console.ReadLine();
 	        Console.Write("Apellidos: ");
 	        emp.Surnames= Console.ReadLine();
